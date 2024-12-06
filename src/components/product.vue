@@ -1,7 +1,7 @@
 <template>
     <img :src="product.src" alt="product"
         class="transition duration-500 ease-in-out rounded-2xl  shadow-md shadow-gray-300">
-    
+
     <div>
         <p class="product-title">{{ product.title }}</p>
         <div class="product-rate">

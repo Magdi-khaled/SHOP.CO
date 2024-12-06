@@ -1,4 +1,5 @@
 import axios from "axios";
+import Product from "../../../components/product.vue";
 
 export const actions = {
     async FetchCartItems({ commit }) {
@@ -7,6 +8,7 @@ export const actions = {
             const cartItems =
                 [
                     {
+                        id: 1,
                         title: 'Gradient Graphic T-Shirt',
                         imgSrc: '/assets/new-arrivals/na-img-1.png',
                         size: 'Medium',
@@ -15,19 +17,12 @@ export const actions = {
                         quantity: 1
                     },
                     {
+                        id: 2,
                         title: 'Gradient Graphic T-Shirt 2',
                         imgSrc: '/assets/new-arrivals/na-img-3.png',
                         size: 'Large',
                         color: 'Green',
                         price: 240,
-                        quantity: 2
-                    },
-                    {
-                        title: 'vertical T-Shirt',
-                        imgSrc: '/assets/new-arrivals/na-img-4.png',
-                        size: 'Large',
-                        color: 'Green',
-                        price: 165,
                         quantity: 1
                     },
                 ];
@@ -40,13 +35,16 @@ export const actions = {
     async AddItemToCart({ commit, dispatch }, cartItem) {
         try {
             // const response = await axios.get('https://api.example.com/products');
-            const cart = this.state.cartItems;
-            const existingItem = cart.find(item => item.id === cartItem.id);
-            if (existingItem) {
-                return
-            }
-            cart.push(cartItem);
-            await commit('Set_CartItems', cart);
+            // const existingItem = cart.find(item => item.id === cartItem.id);
+            // if (existingItem) {
+            //     console.log(cart[existingItem.id - 1]);
+            //     cart[existingItem.id - 1].quantity++;
+            // }
+            // else {
+            // this.state.cartItems.push(cartItem);
+            // }
+            // cart.push(cartItem);
+            // await commit('Set_CartItems', this.state.cartItems);
             dispatch('FetchCartItems');
         }
         catch (error) {
