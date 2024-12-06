@@ -48,7 +48,7 @@
                             title="AddToCart">
                             <i class="fa-solid fa-cart-shopping text-gray-600 hover:text-black text-xl"></i>
                         </button>
-                        <router-link :to="'/shop.co/shop/product'" :infoRoute="1">
+                        <router-link :to="infoRoute(product.id)">
                             <baseProduct :product="product">
                             </baseProduct>
                         </router-link>
@@ -101,7 +101,7 @@ export default {
         console.log(this.shopProducts);
     },
     methods: {
-        ...mapActions(['fetchProducts']),
+        ...mapActions(['fetchProducts', 'AddItemToCart']),
         initData() {
             this.shopProducts = this.Get_Products;
         },
@@ -114,8 +114,16 @@ export default {
                 console.error('fetching shop products error : ', err);
             }
         },
-        addToCart() {
-
+        async addToCart(cartItem) {
+            try {
+                await this.AddItemToCart(cartItem);
+            }
+            catch (err) {
+                console.error('adding item to cart error : ', err);
+            }
+        },
+        infoRoute(id) {
+            return `/shop.co/shop/product/${id}`;
         }
     }
 };
