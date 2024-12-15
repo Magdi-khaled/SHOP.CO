@@ -40,7 +40,7 @@
             </div>
 
             <div class="w-11/12 sm:w-10/12 text-center my-4">
-                <baseButton>log in
+                <baseButton class="w-full">log in
                 </baseButton>
             </div>
             <div class="w-11/12 sm:w-10/12 flex justify-center items-center">
@@ -49,7 +49,7 @@
                 <hr class="h-0.5 bg-gray-200 w-4/12">
             </div>
             <div class="w-11/12 sm:w-10/12 text-center my-4">
-                <baseButton>
+                <baseButton class="w-full">
                     <i class="fa-brands fa-google border-2 p-1 mr-2 rounded-full"></i> google account
                 </baseButton>
                 <p class="py-1 font-bold">Don't have an account ?

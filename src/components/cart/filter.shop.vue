@@ -120,7 +120,7 @@
         </div>
         <hr class="my-4">
         <div>
-            <baseButton @click="applyFilters">
+            <baseButton @click="applyFilters" class="w-full">
                 apply filters
             </baseButton>
         </div>

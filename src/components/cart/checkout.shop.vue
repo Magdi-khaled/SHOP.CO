@@ -22,15 +22,11 @@
             <input v-model="promoCode" placeholder="Add promo code"
                 class="w-8/12 bg-gray-100 outline-none pl-10 py-3 rounded-3xl">
             <i class="fa-duotone fa-solid fa-tag absolute top-3 left-4 text-gray-500 text-xl"></i>
-            <!-- <button
-                class="w-3/12 py-3 capitalize bg-black font-bold text-white rounded-full hover:bg-gray-200 hover:text-black">
-                apply
-            </button> -->
 
             <baseButton class="apply">apply</baseButton>
         </div>
         <div class="mt-3">
-            <baseButton>
+            <baseButton class="w-full">
                 go to checkout <i class="fa-solid fa-arrow-right-long pl-4"></i>
             </baseButton>
         </div>

@@ -12,6 +12,48 @@ export const actions = {
                     rate: 4.5,
                     price: 120,
                     sale: 0.0,
+                    providedColors: [
+                        { color: 'green', value: '00C12B', },
+                        { color: 'red', value: 'F50606', },
+                        { color: 'yellow', value: 'F5DD06', },
+                        { color: 'orange', value: 'F57906', }
+                    ],
+                    providedSizes: ['small', 'medium', 'large', 'x-large'],
+                    productDetails:
+                        `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius assumenda quisquam ipsa ullam, 
+                        fugit dicta distinctio dolore inventore quod, temporibus ea vel porro illum reiciendis. 
+                        Hic quasi voluptatibus necessitatibus culpa Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius assumenda quisquam ipsa ullam, fugit dicta distinctio dolore inventore quod, 
+                        temporibus ea vel porro illum reiciendis. Hic quasi voluptatibus necessitatibus culpa?`,
+                    highlights: [
+                        'Profound RAM assures immense multitasking',
+                        'Sleek unibody chassis and design with a special protective finish to guard against wear and tear',
+                        '15.6-Inch display delivers bright, crisp visuals to enjoy your movies and music videos',
+                        'Decked with an integrated processor core-i7-9750H that gives the system uninterrupted and seamless performance'
+                    ],
+                    feedbacks: [
+                        {
+                            id: 1,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                        {
+                            id: 2,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                        {
+                            id: 3,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                    ],
                 },
                 {
                     id: 2,
@@ -20,6 +62,19 @@ export const actions = {
                     rate: 3.5,
                     price: 240,
                     sale: 0.2,
+                    providedColors: [
+                        { color: 'green', value: '00C12B', },
+                        { color: 'red', value: 'F50606', },
+                        { color: 'yellow', value: 'F5DD06', },
+                        { color: 'orange', value: 'F57906', }
+                    ],
+                    providedSizes: ['small', 'medium', 'large', 'x-large'],
+                    productDetails:
+                        `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius assumenda quisquam ipsa ullam, 
+                        fugit dicta distinctio dolore inventore quod, temporibus ea vel porro illum reiciendis. 
+                        Hic quasi voluptatibus necessitatibus culpa Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius assumenda quisquam ipsa ullam, fugit dicta distinctio dolore inventore quod, 
+                        temporibus ea vel porro illum reiciendis. Hic quasi voluptatibus necessitatibus culpa?`
                 },
                 {
                     id: 3,
@@ -28,6 +83,19 @@ export const actions = {
                     rate: 3.0,
                     price: 180,
                     sale: 0.0,
+                    providedColors: [
+                        { color: 'green', value: '00C12B', },
+                        { color: 'red', value: 'F50606', },
+                        { color: 'yellow', value: 'F5DD06', },
+                        { color: 'orange', value: 'F57906', }
+                    ],
+                    providedSizes: ['small', 'medium', 'large', 'x-large'],
+                    productDetails:
+                        `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius assumenda quisquam ipsa ullam, 
+                        fugit dicta distinctio dolore inventore quod, temporibus ea vel porro illum reiciendis. 
+                        Hic quasi voluptatibus necessitatibus culpa Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius assumenda quisquam ipsa ullam, fugit dicta distinctio dolore inventore quod, 
+                        temporibus ea vel porro illum reiciendis. Hic quasi voluptatibus necessitatibus culpa?`
                 },
                 {
                     id: 4,
@@ -36,6 +104,19 @@ export const actions = {
                     rate: 4.0,
                     price: 130,
                     sale: 0.3,
+                    providedColors: [
+                        { color: 'green', value: '00C12B', },
+                        { color: 'red', value: 'F50606', },
+                        { color: 'yellow', value: 'F5DD06', },
+                        { color: 'orange', value: 'F57906', }
+                    ],
+                    providedSizes: ['small', 'medium', 'large', 'x-large'],
+                    productDetails:
+                        `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius assumenda quisquam ipsa ullam, 
+                        fugit dicta distinctio dolore inventore quod, temporibus ea vel porro illum reiciendis. 
+                        Hic quasi voluptatibus necessitatibus culpa Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius assumenda quisquam ipsa ullam, fugit dicta distinctio dolore inventore quod, 
+                        temporibus ea vel porro illum reiciendis. Hic quasi voluptatibus necessitatibus culpa?`
                 },
                 {
                     id: 5,
@@ -44,6 +125,19 @@ export const actions = {
                     rate: 3.5,
                     price: 240,
                     sale: 0.2,
+                    providedColors: [
+                        { color: 'green', value: '00C12B', },
+                        { color: 'red', value: 'F50606', },
+                        { color: 'yellow', value: 'F5DD06', },
+                        { color: 'orange', value: 'F57906', }
+                    ],
+                    providedSizes: ['small', 'medium', 'large', 'x-large'],
+                    productDetails:
+                        `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius assumenda quisquam ipsa ullam, 
+                        fugit dicta distinctio dolore inventore quod, temporibus ea vel porro illum reiciendis. 
+                        Hic quasi voluptatibus necessitatibus culpa Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius assumenda quisquam ipsa ullam, fugit dicta distinctio dolore inventore quod, 
+                        temporibus ea vel porro illum reiciendis. Hic quasi voluptatibus necessitatibus culpa?`
                 },
                 {
                     id: 6,
@@ -52,6 +146,19 @@ export const actions = {
                     rate: 3.0,
                     price: 180,
                     sale: 0.0,
+                    providedColors: [
+                        { color: 'green', value: '00C12B', },
+                        { color: 'red', value: 'F50606', },
+                        { color: 'yellow', value: 'F5DD06', },
+                        { color: 'orange', value: 'F57906', }
+                    ],
+                    providedSizes: ['small', 'medium', 'large', 'x-large'],
+                    productDetails:
+                        `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius assumenda quisquam ipsa ullam, 
+                        fugit dicta distinctio dolore inventore quod, temporibus ea vel porro illum reiciendis. 
+                        Hic quasi voluptatibus necessitatibus culpa Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius assumenda quisquam ipsa ullam, fugit dicta distinctio dolore inventore quod, 
+                        temporibus ea vel porro illum reiciendis. Hic quasi voluptatibus necessitatibus culpa?`
                 },
                 {
                     id: 7,
@@ -60,6 +167,48 @@ export const actions = {
                     rate: 4.0,
                     price: 130,
                     sale: 0.3,
+                    providedColors: [
+                        { color: 'green', value: '00C12B', },
+                        { color: 'red', value: 'F50606', },
+                        { color: 'yellow', value: 'F5DD06', },
+                        { color: 'orange', value: 'F57906', }
+                    ],
+                    providedSizes: ['small', 'medium', 'large', 'x-large'],
+                    productDetails:
+                        `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius assumenda quisquam ipsa ullam, 
+                        fugit dicta distinctio dolore inventore quod, temporibus ea vel porro illum reiciendis. 
+                        Hic quasi voluptatibus necessitatibus culpa Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius assumenda quisquam ipsa ullam, fugit dicta distinctio dolore inventore quod, 
+                        temporibus ea vel porro illum reiciendis. Hic quasi voluptatibus necessitatibus culpa?`,
+                    highlights: [
+                        'Profound RAM assures immense multitasking',
+                        'Sleek unibody chassis and design with a special protective finish to guard against wear and tear',
+                        '15.6-Inch display delivers bright, crisp visuals to enjoy your movies and music videos',
+                        'Decked with an integrated processor core-i7-9750H that gives the system uninterrupted and seamless performance'
+                    ],
+                    feedbacks: [
+                        {
+                            id: 1,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                        {
+                            id: 2,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                        {
+                            id: 3,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                    ],
                 },
                 {
                     id: 8,
@@ -68,6 +217,48 @@ export const actions = {
                     rate: 3.0,
                     price: 180,
                     sale: 0.0,
+                    providedColors: [
+                        { color: 'green', value: '00C12B', },
+                        { color: 'red', value: 'F50606', },
+                        { color: 'yellow', value: 'F5DD06', },
+                        { color: 'orange', value: 'F57906', }
+                    ],
+                    providedSizes: ['small', 'medium', 'large', 'x-large'],
+                    productDetails:
+                        `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius assumenda quisquam ipsa ullam, 
+                        fugit dicta distinctio dolore inventore quod, temporibus ea vel porro illum reiciendis. 
+                        Hic quasi voluptatibus necessitatibus culpa Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius assumenda quisquam ipsa ullam, fugit dicta distinctio dolore inventore quod, 
+                        temporibus ea vel porro illum reiciendis. Hic quasi voluptatibus necessitatibus culpa?`,
+                    highlights: [
+                        'Profound RAM assures immense multitasking',
+                        'Sleek unibody chassis and design with a special protective finish to guard against wear and tear',
+                        '15.6-Inch display delivers bright, crisp visuals to enjoy your movies and music videos',
+                        'Decked with an integrated processor core-i7-9750H that gives the system uninterrupted and seamless performance'
+                    ],
+                    feedbacks: [
+                        {
+                            id: 1,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                        {
+                            id: 2,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                        {
+                            id: 3,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                    ],
                 },
                 {
                     id: 9,
@@ -76,6 +267,48 @@ export const actions = {
                     rate: 4.0,
                     price: 130,
                     sale: 0.3,
+                    providedColors: [
+                        { color: 'green', value: '00C12B', },
+                        { color: 'red', value: 'F50606', },
+                        { color: 'yellow', value: 'F5DD06', },
+                        { color: 'orange', value: 'F57906', }
+                    ],
+                    providedSizes: ['small', 'medium', 'large', 'x-large'],
+                    productDetails:
+                        `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius assumenda quisquam ipsa ullam, 
+                        fugit dicta distinctio dolore inventore quod, temporibus ea vel porro illum reiciendis. 
+                        Hic quasi voluptatibus necessitatibus culpa Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius assumenda quisquam ipsa ullam, fugit dicta distinctio dolore inventore quod, 
+                        temporibus ea vel porro illum reiciendis. Hic quasi voluptatibus necessitatibus culpa?`,
+                    highlights: [
+                        'Profound RAM assures immense multitasking',
+                        'Sleek unibody chassis and design with a special protective finish to guard against wear and tear',
+                        '15.6-Inch display delivers bright, crisp visuals to enjoy your movies and music videos',
+                        'Decked with an integrated processor core-i7-9750H that gives the system uninterrupted and seamless performance'
+                    ],
+                    feedbacks: [
+                        {
+                            id: 1,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                        {
+                            id: 2,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                        {
+                            id: 3,
+                            name: 'John Doe',
+                            rating: 5,
+                            feedback: 'This product is amazing',
+                            date: '2022-01-01'
+                        },
+                    ],
                 },
             ];
             await commit('Set_Products', products);
