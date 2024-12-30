@@ -15,7 +15,7 @@
         <hr class="h-0.5 w-full bg-gray-400">
         <!-- Cart Items -->
         <div v-if="!cartItems.length" class="h-screen w-full flex items-center justify-center">
-            <h1 class="font-bold text-xl capitalize font-sans text-gray-400">no items in your cart...</h1>
+            <h1 class="font-bold text-xl capitalize text-gray-400">no items in your cart...</h1>
         </div>
         <div v-else class="overflow-y-scroll">
             <div v-for="item in cartItems" class="cart-item flex flex-wrap items-center relative">
@@ -27,16 +27,17 @@
                 </div>
                 <div class="w-8/12">
                     <h1 class="font-bold text-md capitalize">{{ item.title }}</h1>
-                    <p class="font-bold text-md capitalize">size: <span class="text-gray-500">{{ item.size }}</span></p>
-                    <p class="font-bold text-md capitalize">color: <span class="text-gray-500">{{ item.color }}</span>
+                    <p class="font-medium text-md capitalize">size: <span class="text-gray-500">{{ item.size }}</span>
+                    </p>
+                    <p class="font-medium text-md capitalize">color: <span class="text-gray-500">{{ item.color }}</span>
                     </p>
                     <div class="flex items-center justify-between">
-                        <p class="font-bold text-xl capitalize">${{ item.price }}</p>
-                        <div
-                            class="pagination p-2 font-bold flex items-center justify-evenly text-md rounded-md bg-gray-100">
-                            <button @click="item.quantity--"><i class="fa-solid fa-minus"></i></button>|
-                            <p disabled class="px-2 ">{{ item.quantity }}</p>|
-                            <button @click="item.quantity++"><i class="fa-solid fa-plus"></i></button>
+                        <p class="font-bold text-lg capitalize">${{ item.price }}</p>
+                        <div class="pagination py-2 font-medium flex items-center justify-evenly text-md rounded-md bg-gray-200 
+                            text-gray-600 bg-gray-200 border-2 border-gray-400">
+                            <button @click="item.quantity--"><i class="fa-solid fa-minus px-1"></i></button>
+                            <p disabled class="px-2 border-x-2 border-x-black">{{ item.quantity }}</p>
+                            <button @click="item.quantity++"><i class="fa-solid fa-plus px-1"></i></button>
                         </div>
                     </div>
                 </div>

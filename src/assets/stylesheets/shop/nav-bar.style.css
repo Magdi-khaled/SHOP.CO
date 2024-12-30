@@ -19,7 +19,6 @@
 }
 .nav-links ul li:hover {
   color: gray;
-  font-weight: bold;
 }
 
 .nav-links-hidden ul li:not(.hidden-shop-li-1):hover,

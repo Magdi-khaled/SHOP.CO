@@ -1,20 +1,21 @@
 ```html
 <template>
     <baseNavbar></baseNavbar>
-    <div class="product h-fit mt-12 px-8 md:px-16 flex flex-wrap">
-        <div class="images w-full md:w-1/2 flex">
-            <div class="w-3/12">
-                <div v-for="(image, index) in images" :key="index" class="w-full p-2" @click="showImage(image, index)">
+    <div class="product h-fit mt-4 sm:mt-12 px-4 md:px-16 flex flex-wrap">
+        <div class="w-full md:w-1/2 flex flex-row md:flex-col-reverse lg:flex-row justify-between	">
+            <div class="w-4/12 md:w-full lg:w-4/12 flex flex-col md:flex-row lg:flex-col">
+                <div v-for="(image, index) in images" :key="index" class="w-full h-fit p-2"
+                    @click="showImage(image, index)">
                     <img :class="{ 'border-2 border-red-400': selectedImageIndex == index }"
                         class="cursor-pointer rounded-3xl border-2" :src="image" alt="">
                 </div>
             </div>
-            <div class="w-9/12 p-2">
-                <img class="w-full rounded-xl" :src="selectedImg" alt="">
+            <div class="w-full p-2 h-full md:h-[75%]">
+                <img class="w-full h-full lg:h-fit rounded-xl" :src="selectedImg" alt="">
             </div>
         </div>
-        <div class="p-2 px-8 w-full md:w-1/2">
-            <p class="candal-regular font-bold text-3xl md:text-5xl uppercase">{{ product.title }}</p>
+        <div class="p-2 px-4 md:px-8 w-full md:w-1/2">
+            <p class="candal-regular font-bold text-3xl md:text-3xl lg:text-5xl uppercase">{{ product.title }}</p>
             <div class="product-rate">
                 <div class="stars-rate my-2 flex items-center gap-2">
                     <div v-for="item in Math.floor(product.rate)">
@@ -54,8 +55,8 @@
                 <p class="capitalize text-gray-600">select color</p>
                 <div class="colors mt-3 flex">
                     <label v-for="item in product.providedColors" class="relative">
-                        <input type="radio" v-model="color" :value="item.value" class="appearance-none w-10 h-10 
-                        mr-3 border-2 border-gray-400 cursor-pointer rounded-full "
+                        <input name="selectedColor" type="radio" v-model="color" :value="item.value" class="appearance-none w-10 
+                        h-10 mr-3 border-2 border-gray-400 cursor-pointer rounded-full "
                             :class="{ 'outline outline-2 outline-[#000]': color == item.value }"
                             :style="{ 'background-color': `#${item.value}` }">
                         <i v-if="color" class="fa-solid fa-check text-white absolute z-30 py-3 px-4 text-2xl"
@@ -70,8 +71,8 @@
                     <label v-for="item in product.providedSizes" :key="item" class="flex items-center cursor-pointer">
                         <input type="radio" v-model="size" :value="item" :id="item" class="appearance-none hidden">
                         <span
-                            class="px-3 py-2 mr-1 bg-gray-200 text-gray-600 rounded-2xl capitalize font-bold transition-all"
-                            :class="{ 'bg-[#000000] text-white': size === item }">
+                            class="px-3 py-2 mr-1 border-2 bg-gray-100 text-gray-600 rounded-2xl whitespace-nowrap capitalize font-bold transition-all"
+                            :class="{ 'bg-[#000020] text-white': size === item }">
                             {{ item }}
                         </span>
                     </label>
@@ -79,38 +80,38 @@
             </div>
             <hr class="my-4">
             <div class="flex justify-between w-full gap-5">
-                <div
-                    class="flex items-center justify-between bg-gray-200 text-gray-600 rounded-2xl font-bold w-3/12 text-xl py-2 px-4">
-                    <button><i class="fa-solid fa-minus"></i></button>
-                    <span class="font-bold">{{ quantity }}</span>
-                    <button><i class="fa-solid fa-plus"></i></button>
+                <div class="flex items-center justify-between border-2 bg-gray-100 text-gray-600 rounded-2xl font-bold w-[25%]
+                    text-lg">
+                    <button @click="quantity--" class="pl-5"><i class="fa-solid fa-minus"></i></button>
+                    <span class="font-bold px-4 border-x-2">{{ quantity }}</span>
+                    <button @click="quantity++" class="pr-5"><i class="fa-solid fa-plus"></i></button>
                 </div>
                 <div class="w-9/12">
-                    <baseButton class="w-full">add to cart <i class="fa-solid fa-cart-shopping"></i></baseButton>
+                    <baseButton class="addToCart-btn w-full">add to cart <i class="fa-solid fa-cart-shopping"></i>
+                    </baseButton>
                 </div>
             </div>
         </div>
     </div>
     <div class="product-details px-8 md:px-16 mt-8">
         <div class="product-header flex justify-evenly border-b border-b-2">
-            <button @click="productDetails = true" class="w-1/2 py-4 capitalize font-bold text-xl"
+            <button @click="productDetails = true" class="w-1/2 py-4 capitalize font-bold text-md md:text-xl"
                 :class="{ 'border-r border-r-2 border-b border-b-4 border-b-black': productDetails }">
                 product details</button>
-            <button @click="productDetails = false" class="w-1/2 py-4 capitalize font-bold text-xl"
+            <button @click="productDetails = false" class="w-1/2 py-4 capitalize font-bold text-md md:text-xl"
                 :class="{ 'border-l border-l-2 border-b border-b-4 border-b-black': !productDetails }">
                 ratings & reviews</button>
         </div>
         <div>
             <div v-if="productDetails" class="bg-gray-50 rounded-b-xl p-4">
                 <div class="product-description mt-6">
-                    <h1 class="capitalize tracking-wide font-sans text-2xl font-bold text-black">
+                    <h1 class="capitalize tracking-wide font-sans text-xl md:text-2xl font-bold text-black">
                         title : <span class="text-gray-700">{{ product.title }}</span>
                     </h1>
                     <h1 class="capitalize tracking-wide font-sans text-2xl font-bold text-black text-2xl">
                         description :</h1>
                     <div class="leading-8 text-gray-700">
                         <ul>
-
                             <li v-for="item in product.highlights" :key="index" class="font-bold">
                                 - {{ item }}
                             </li>
@@ -118,19 +119,20 @@
                     </div>
                 </div>
             </div>
-            <div v-else class="rounded-b-xl p-4">
+            <div v-else class="rounded-b-xl">
                 <div class="product-reviews mt-6">
                     <div class="mb-5 flex items-center justify-between">
-                        <p class="text-2xl font-bold capitalize">all reviews <span class="text-gray-500 text-sm">
-                                ({{ allReviews }})</span></p>
-                        <div class="flex gap-2">
-                            <button
-                                class="px-5 py-3 w-20 bg-gray-100 text-black rounded-full hover:bg-[#000] hover:text-gray-200 transition duration-300">
+                        <p class="text-lg md:text-2xl font-bold capitalize">all reviews <span
+                                class="text-gray-500 text-sm">
+                                ({{ product.feedbacks.length }})</span></p>
+                        <div class="flex gap-1 md:gap-2">
+                            <button class="px-2 md:px-3 py-3 bg-gray-100 text-black rounded-full hover:bg-[#000] hover:text-gray-200 
+                                transition duration-300">
                                 <i class="fa-solid fa-filter-list"></i>
                             </button>
                             <div class="relative">
                                 <i class="fa-solid fa-sort-down text-black absolute z-30 top-3 right-4"></i>
-                                <select id="reviewFilter" class="pr-10 pl-4 py-3 relative capitalize font-bold 
+                                <select id="reviewFilter" class="pr-6 md:pr-10 pl-2 md:pl-4 py-3 relative capitalize font-bold 
                                 border-none bg-gray-100 text-black rounded-full cursor-pointer
                                 appearance-none" v-model="reviewsFilter">
                                     <option value="latest" class="text-md font-bold " selected>latest
@@ -138,75 +140,63 @@
                                     <option value="earliest" class="text-md font-bold">earliest</option>
                                 </select>
                             </div>
-                            <baseButton @click="navigateAndToggleReview" class="review-btn py-4">
-                                write <span class="lowercase">a</span> review <i class="fa-solid fa-pen-line"></i>
+                            <baseButton title="Write a Review" @click="navigateAndToggleReview"
+                                class="review-btn whitespace-nowrap flex items-center py-3">
+                                <!-- <p v-if="condition" class="pr-1">write <span class="lowercase">a</span> review </p> -->
+                                <i class="fa-solid fa-pen-line"></i>
                             </baseButton>
                         </div>
                     </div>
                     <!-- FEEDBACK -->
-                    <div>
-                        <div class="w-full flex flex-wrap justify-between">
-                            <div v-for="feedback in product.feedbacks" :key="feedback"
-                                class="feedback-card bg-white p-4 mb-4 sm:p-8 border-2 border-solid rounded-xl">
-                                <div class="flex justify-between">
-                                    <div class="card-rate flex gap-1">
-                                        <i v-for="i in 5" class="fa-solid fa-star text-[#FFD43B]"></i>
-                                    </div>
-                                    <button class="hover:bg-gray-200 px-2 rounded-full transition duration-300">
-                                        <i class="fa-solid fa-ellipsis hover:text-gray-600 text-gray-400 text-xl"></i>
-                                    </button>
-                                </div>
-                                <div class="card-author flex w-32 pb-2 items-center gap-2">
-                                    <p class="capitalize font-bold">nathan aki</p>
-                                    <i class="fa-solid fa-circle-check text-[#01AB31]"></i>
-                                </div>
-                                <div class="card-content h-28">
-                                    <p class="text-wrap	text-sm md:text-md font-bold text-gray-500">
-                                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-                                        facere distinctio saepe itaque error, quisquam quis et ipsa,
-                                        unde dignissimos delectus ad neque exercitationem magni
-                                        assumenda hic quia rerum nobis?exercitationem magni assumenda hic
-                                        quia rerum nobis? exercitationem magni. assumenda hic quia rerum
-                                        nobis? exercitationem magni. "
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-500">Posted on August 15, 2023 </p>
-                                </div>
-                            </div>
+                    <div v-if="!product.feedbacks.length"
+                        class="product-reviews bg-gray-50 h-28 flex justify-center items-center">
+                        <h1 class="font-bold text-md text-gray-500">no reviews about this product untill
+                            now...</h1>
+                    </div>
+                    <div v-else class="flex flex-row flex-wrap justify-between">
+                        <div v-for="(review, index) in displayedFeedbacks" :key="index" class="w-full lg:w-[49%] my-4">
+                            <baseCard :card="review"></baseCard>
                         </div>
-                        <div v-if="product.feedbacks.length > 6" class="flex justify-center">
-                            <button @click="showMoreReviews" class="py-3 px-4 capitalize font-bold text-md rounded-full border-2 bg-white hover:text-white 
-                                hover:bg-[#2f2f2f]">
-                                load more reviews</button>
-                        </div>
-                        <span id="write-review"></span>
-                        <hr class="my-8">
-                        <div class="w-full font-bold flex flex-col flex-wrap gap-3 p-6 rounded-xl border-2">
-                            <div class="flex items-center gap-4 ">
-                                <label for="review" class="text-xl">Write your review
-                                    <i class="fa-solid fa-pen-line"></i>
-                                </label>
-                                <div class="w-2/12 relative">
-                                    <div @click="dropdownOpen = !dropdownOpen"
-                                        class="capitalize font-bold bg-gray-100 border-2 p-2 rounded-xl cursor-pointer">
-                                        {{ selectedRating || 'Choose rate' }}
-                                        <i class="fa-solid fa-sort-down text-black absolute z-30 top-2 right-4"></i>
-                                    </div>
-                                    <ul v-if="dropdownOpen"
-                                        class="w-full absolute bg-white border mt-1 rounded-xl shadow-lg z-10">
-                                        <li v-for="item in 5" :key="item" @click="selectRating(item)"
-                                            class="p-2 cursor-pointer hover:bg-gray-100 flex items-center">
+                    </div>
+                    <div v-if="product.feedbacks.length > displayedCount" class="flex justify-center">
+                        <button @click="showMoreReviews" class="py-2 px-4 capitalize font-bold text-md rounded-md border-2
+                        bg-white hover:text-white whitespace-nowrap hover:bg-[#2f2f2f]">
+                            load more reviews <i class="fa-solid fa-chevrons-right"></i></button>
+                    </div>
+                    <span id="write-review"></span>
+                    <hr class="my-8">
+                    <div class="w-full font-bold flex flex-col flex-wrap p-6 rounded-3xl border-2">
+                        <div class="flex items-center justify-between flex-wrap">
+                            <label for="review" class="mb-4 text-lg sm:text-xl whitespace-nowrap ">Write your review
+                                <i class="fa-solid fa-pen-line"></i>
+                            </label>
+                            <div class="w-full sm:w-3/12 whitespace-nowrap relative">
+                                <div @click="dropdownOpen = !dropdownOpen" class="capitalize text-md sm:text-lg font-bold
+                                bg-gray-100 border-2 p-2 rounded-xl cursor-pointer">
+                                    <span v-if="selectedRating">
+                                        Selcted Rate : {{ selectedRating }}/5
+                                    </span>
+                                    <span v-else>Choose rate</span>
+                                    <i class="fa-solid fa-sort-down text-black absolute z-30 top-[25%] right-[4%]"></i>
+                                </div>
+                                <div v-if="dropdownOpen">
+                                    <ul class="w-full absolute bg-white mt-0.5 rounded-xl shadow-lg">
+                                        <li v-for="item in 5" :key="item" @click="selectRating(item)" class="px-2 sm:px-4 py-1 cursor-pointer text-md 
+                                        sm:text-lg hover:bg-gray-100 hover:rounded-xl flex items-center">
+                                            <p class="pr-3">{{ item }}</p>
                                             <i v-for="i in item" :key="i" class="fa-solid fa-star text-yellow-500"></i>
-                                            <p class="pl-3">{{ item }}</p>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="flex flex-wrap gap-2 w-full">
-                                <input v-model="review" id="review" type="text" placeholder="Write feedback here..."
-                                    class="w-10/12 py-3 px-4 bg-[#f2f2f2] outline-none rounded-2xl focus:bg-white focus:border-2">
-                                <baseButton class="w-52">submit</baseButton>
+                        </div>
+                        <div class="w-full mt-2">
+                            <textarea v-model="review" id="review" type="text" placeholder="Write feedback here..."
+                                class="w-full py-3 px-3 bg-gray-100 outline-none rounded-xl focus:bg-white border-2">
+                            </textarea>
+                            <div class="w-full flex justify-end mt-2">
+                                <baseButton :class="{ 'submit-review w-full sm:w-3/12': true }">submit
+                                </baseButton>
                             </div>
                         </div>
                     </div>
@@ -219,10 +209,11 @@
 <script>
 import baseNavbar from '../../../components/baseNavbar.vue';
 import baseButton from '../../../components/baseButton.vue';
+import baseCard from '../../../components/baseCard.vue';
 import baseFooter from '../../../components/baseFooter.vue';
 import { mapActions, mapGetters, } from 'vuex';
 export default {
-    components: { baseNavbar, baseButton, baseFooter },
+    components: { baseNavbar, baseButton, baseCard, baseFooter },
     data() {
         return {
             product: {},
@@ -255,27 +246,19 @@ export default {
             review: "",
             selectedRating: null,
             dropdownOpen: false,
+            displayedCount: 6
         }
     },
     computed: {
         ...mapGetters(['Get_Products']),
-        colortype() {
-            return this.colorList.find((v) => this.color == v.color);
-        },
-        selectedColor() {
-            var selectedColor = '';
-            this.colorList.forEach((v) => {
-                if (this.color === v.color) {
-                    selectedColor = v;
-                }
-            });
-            return selectedColor;
+        displayedFeedbacks() {
+            return this.product.feedbacks.slice(0, this.displayedCount);
         },
     },
     async created() {
         await this.fetchData();
         console.log(this.Get_Products);
-        console.log(this.product);
+        console.log(this.product.feedbacks.length);
     },
     methods: {
         ...mapActions(['fetchProducts']),
@@ -292,7 +275,7 @@ export default {
             this.selectedImageIndex = index;
         },
         initData() {
-            this.product = this.Get_Products.find(v => v.id === +this.$route.params.id);
+            this.product = this.Get_Products.find(v => v._id === +this.$route.params.id);
             //...
             this.images.push(new URL(this.product.src, import.meta.url).href);
             this.images.push(new URL(this.product.src, import.meta.url).href);
@@ -321,7 +304,7 @@ export default {
             this.dropdownOpen = false;
         },
         showMoreReviews() {
-
+            this.displayedCount += 4;
         },
     }
 }
@@ -376,14 +359,18 @@ export default {
     bottom: -8%;
 }
 
-.feedback-card {
-    width: 49%;
+:deep(.addToCart-btn) {
+    padding: 12px 0;
 }
 
 .review-btn,
 .review-edit {
     padding: 8px 28px;
     border-radius: 50px;
+}
+
+:deep(.submit-review) {
+    padding: 12px;
 }
 
 @media (max-width:656px) {

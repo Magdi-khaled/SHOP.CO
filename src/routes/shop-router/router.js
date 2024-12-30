@@ -9,13 +9,14 @@ const router = createRouter({
         },
         {
             path: '/shop.co/home',
-            name: 'home',
+            name: 'shop.co-home',
             component: () => import('../../views/shop/home.vue'),
         },
         {
             path: "/shop.co/shop",
             name: "shop",
             component: () => import("../../views/shop/shop.vue"),
+            meta: { requiresTransition: true },
         },
         {
             path: "/shop.co/shop/product/:id",

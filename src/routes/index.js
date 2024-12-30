@@ -39,4 +39,22 @@ const router = createRouter({
     },
 });
 
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresTransition) {
+        // Show the loader only if the route requires a transition
+        document.getElementById('loading').classList.remove('hidden');
+    }
+    next();
+});
+
+router.afterEach((to) => {
+    if (to.meta.requiresTransition) {
+        // Hide the loader after the route transition
+        setTimeout(() => {
+            document.getElementById('loading').classList.add('hidden');
+        }, 1000); // Optional delay to match your transition
+    }
+});
+
 export default router;

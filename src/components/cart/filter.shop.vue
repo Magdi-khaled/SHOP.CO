@@ -1,114 +1,131 @@
 <template>
-    <div class="filter hidden md:block w-3/12 bg-white h-fit border-2 rounded-xl p-6"
+    <div class="filter hidden md:block w-3/12 bg-white h-fit  rounded-md "
         :style="(showFilter && !hideFitler) ? FilterStyle : {}">
-        <div class="filter-header flex justify-between pb-4 text-xl md:text-2xl">
-            <h1 class="capitalize font-sans font-bold">filters</h1>
-            <button v-if="hideFitler" class="rounded-full text-gray-500" disabled>
-                <img src="../../assets/images/icons/filter.png" alt="filter-icon">
-            </button>
-            <button v-else @click="$emit('closeFilter')">
-                <i class="fa-sharp fa-solid fa-xmark text-2xl"></i>
+        <div v-if="!hideFitler" class="filter-header flex justify-between pb-4 text-xl md:text-2xl">
+            <h1 class="capitalize font-bold">filters</h1>
+            <button @click="$emit('closeFilter')">
+                <i class="fa-solid fa-xmark text-2xl hover:text-gray-500"></i>
             </button>
         </div>
-        <hr>
-        <div v-for="item in clothes" class="clothes mt-4 text-gray-500">
+        <hr v-if="!hideFitler">
+        <div v-for="item in clothes" class="clothes mt-4 text-gray-600">
             <div class="flex flex-wrap justify-between items-center">
-                <button @click="item.show = !item.show" :class="{ 'text-black': item.show }"
-                    class="capitalize font-bold flex justify-between w-full outline-none">
+                <button @click="item.show = !item.show" :class="{ 'text-blue-500': item.show }"
+                    class="capitalize flex justify-start items-center gap-2">
+                    <i v-if="item.show" class="fa-duotone fa-solid fa-minus text-sm text-blue-600"></i>
+                    <i v-else class="fa-duotone fa-solid fa-plus text-sm text-gray-900"></i>
                     {{ item.type }}
-                    <i class="fa-regular fa-chevron-right"></i>
                 </button>
                 <div v-if="item.show" class="pl-4 text-black w-full">
+                    <hr class="my-2">
                     <ul v-for="item in item.looks">
-                        <input type="radio" v-model="clothesType" :value="item" :id="item">
-                        <label :for="item" class="text-md font-bold capitalize pl-2">{{ item }}</label>
+                        <label :for="item">
+                            <input type="checkbox" :value="item" :id="item" class="cursor-pointer">
+                            <label :for="item" class="text-md capitalize pl-2">{{ item }}</label>
+                        </label>
                     </ul>
                 </div>
             </div>
         </div>
         <hr class="my-4">
         <div>
-            <h1 class="capitalize font-bold py-4 text-md md:text-xl flex justify-between w-full outline-none">
+            <h1 class="capitalize font-bold py-2 text-lg flex justify-between w-full outline-none">
                 price
                 <button @click="pricing = !pricing">
-                    <i v-if="!pricing" class="fa-sharp-duotone fa-regular fa-angle-up text-md"></i>
-                    <i v-else class="fa-regular fa-chevron-down text-md"></i>
+                    <i v-if="pricing"
+                        class="fa-sharp-duotone fa-regular fa-angle-up text-md  text-gray-400 font-bold"></i>
+                    <i v-else class="fa-regular fa-chevron-down text-md text-gray-400 font-bold"></i>
                 </button>
             </h1>
-            <div :class="{ active: pricing }" class="priceRange mb-12">
+            <div :class="{ active: !pricing }" class="priceRange mb-12">
                 <!-- Slider Container -->
                 <div ref="slider" class="my-2 "></div>
             </div>
         </div>
-        <hr class="my-4">
+        <!-- <hr class="my-4"> -->
         <div>
-            <h1 class="capitalize font-bold py-4 text-md md:text-xl flex justify-between w-full outline-none">
-                colors
+            <h1 class="capitalize font-bold py-4 text-lg flex justify-between w-full outline-none">
+                colour
                 <button @click="coloring = !coloring">
-                    <i v-if="!coloring" class="fa-sharp-duotone fa-regular fa-angle-up text-md"></i>
-                    <i v-else class="fa-regular fa-chevron-down text-md"></i>
+                    <i v-if="coloring"
+                        class="fa-sharp-duotone fa-regular fa-angle-up text-md text-gray-400 font-bold"></i>
+                    <i v-else class="fa-regular fa-chevron-down text-md text-gray-400 font-bold"></i>
                 </button>
             </h1>
-            <div :class="{ active: coloring }" class="colors w-full mb-4 flex flex-wrap">
+            <div :class="{ active: !coloring }" class="colors w-full mb-4">
                 <label v-for="colorItem in colorList" class="relative">
                     <input type="radio" v-model="color" :value="colorItem.color"
-                        class="appearance-none w-7 lg:w-10 h-7 lg:h-10 m-1 border-2 border-gray-400 cursor-pointer rounded-full "
+                        class="appearance-none w-8 h-8 m-1 border-2 border-gray-400 cursor-pointer rounded-full "
                         :class="{ 'outline outline-2 outline-black': color == colorItem.color }"
                         :style="{ 'background-color': `#${colorItem.value}` }">
-                    <i v-if="color" class="fa-solid fa-check text-white absolute z-30 py-3 px-4 text-2xl"
+                    <i v-if="color" class="fa-solid fa-check text-white absolute z-30 py-3 px-4 text-xl"
                         :class="{ 'hidden': color != colorItem.color }"></i>
                 </label>
                 <p class="font-bold capitalize">
-                    ( <i class="fa-regular fa-palette"></i> ) selected color:
-                    <span :style="{ 'color': `#${selectedColor.value}` }">
-                        {{ selectedColor.color }}</span>
-                    <span class="text-gray-400" v-if="!color">none </span>
+                    ( <i class="fa-regular fa-palette"></i> ) selected colour:
+                    <span v-if="color" :style="{ 'color': `#${selectedColor.value}` }">
+                        [{{ selectedColor.color }}]</span>
+                    <span class="text-gray-400 font-normal" v-if="!color">[ all ]</span>
                 </p>
             </div>
         </div>
-        <hr class="my-4">
+        <!-- <hr class="my-4"> -->
         <div>
-            <h1 class="capitalize font-bold py-4 text-md md:text-xl flex justify-between w-full outline-none">
+            <h1 class="capitalize font-bold py-4 text-lg flex justify-between w-full outline-none">
                 size
                 <button @click="sizing = !sizing">
-                    <i v-if="!sizing" class="fa-sharp-duotone fa-regular fa-angle-up text-md"></i>
-                    <i v-else class="fa-regular fa-chevron-down text-md"></i>
+                    <i v-if="sizing"
+                        class="fa-sharp-duotone fa-regular fa-angle-up text-md text-gray-400 font-bold"></i>
+                    <i v-else class="fa-regular fa-chevron-down text-md text-gray-400 font-bold"></i>
                 </button>
             </h1>
-            <div :class="{ active: sizing }" class="sizing flex flex-wrap ">
-                <div v-for="sizeType in sizeList">
-                    <input type="checkbox" :id="sizeType" class="p-2 m-1 rounded-md font-bold border-2"
-                        v-model="sizchoosenArr" :value="sizeType"
-                        :class="{ 'outline outline-2 outline-black': selectedSize == sizeType }">
-                    <label :for="sizeType" class="font-bold capitalize">{{ sizeType }}</label>
+            <div :class="{ active: !sizing }" class="sizing flex flex-wrap">
+                <div class="colors flex flex-wrap gap-2 mb-4">
+                    <label v-for="item in sizeList" :key="item" class="flex items-center cursor-pointer">
+                        <input type="radio" v-model="selectedSize" :value="item" :id="item"
+                            class="appearance-none hidden">
+                        <span class="p-1 border-2 bg-gray-100 text-gray-900 rounded-md whitespace-nowrap 
+                            capitalize transition-all" :class="{ 'bg-gray-800 text-white': selectedSize === item }">
+                            {{ item }}
+                        </span>
+                    </label>
                 </div>
                 <p class="mt-2 w-full font-bold capitalize">
-                    ( <i class="fa-solid fa-text-size text-gray-400"></i> ) selected sizes:
-                <div v-if="sizchoosenArr.length">
+                    ( <i class="fa-solid fa-text-size text-gray-400"></i> ) selected size:
+                    <span v-if="selectedSize" :style="{ 'color': `#${selectedSize.value}` }" class="text-gray-500 ">
+                        [{{ selectedSize }}]</span>
+                    <!-- <div v-if="sizchoosenArr.length">
                     <ul v-for="size in sizchoosenArr" :key="size" class="flex w-full">
-                        <li class="w-5/12"><i class="fa-solid fa-minus"></i> {{ size }}</li>
+                        <li class="w-5/12"><i class="fa-solid fa-minus"></i> [{{ size }}]</li>
                     </ul>
-                </div>
-                <span v-else class="text-gray-400">none </span>
+                </div> -->
+                    <span v-else class="text-gray-400 font-normal">[ all ]</span>
                 </p>
             </div>
         </div>
-        <hr class="my-4">
+        <!-- <hr class="my-4"> -->
         <div>
-            <h1 class="capitalize font-bold py-4 text-md md:text-xl flex justify-between w-full outline-none">
+            <h1 class="capitalize font-bold py-4 text-lg flex justify-between w-full outline-none ">
                 dress style
                 <button @click="styling = !styling">
-                    <i v-if="!styling" class="fa-sharp-duotone fa-regular fa-angle-up text-md"></i>
-                    <i v-else class="fa-regular fa-chevron-down text-md"></i>
+                    <i v-if="!styling"
+                        class="fa-sharp-duotone fa-regular fa-angle-up text-md text-gray-400 font-bold"></i>
+                    <i v-else class="fa-regular fa-chevron-down text-md text-gray-400 font-bold"></i>
                 </button>
             </h1>
             <div :class="{ active: styling }" v-for="item in styles" class="styling mt-4 text-gray-500">
                 <div class="flex flex-wrap justify-between items-center">
-                    <button @click="item.show = !item.show" :class="{ 'text-black': item.show }"
+                    <button @click="item.show = !item.show" :class="{ 'text-blue-500': item.show }"
+                        class="capitalize flex justify-start items-center gap-2">
+                        <i v-if="item.show" class="fa-duotone fa-solid fa-minus text-sm text-blue-600"></i>
+                        <i v-else class="fa-duotone fa-solid fa-plus text-sm text-gray-900"></i>
+                        {{ item.type }}
+                    </button>
+                    <!-- <button @click="item.show = !item.show" :class="{ 'text-black': item.show }"
                         class="capitalize font-bold flex justify-between w-full outline-none">
                         {{ item.type }}
                         <i class="fa-regular fa-chevron-right"></i>
-                    </button>
+                    </button> -->
                     <div v-if="item.show" class="pl-4 text-black w-full">
                         <ul v-for="item in item.looks">
                             <input type="radio" v-model="clothesType" :value="item" :id="item">
@@ -147,7 +164,7 @@ export default {
             selectedSize: null,
             sizchoosenArr: [],
             clothes: [
-                { type: 't-shirts', looks: ['polo', 'oversize'], show: false },
+                { type: 't-shirts', looks: ['polo', 'oversize', 'carow'], show: false },
                 { type: 'shorts', looks: ['jeans', 'likra'], show: false },
                 { type: 'shirts', looks: ['striped', 'formal'], show: false },
                 { type: 'hoodies', looks: ['paints', 'no-paints'], show: false },
@@ -232,7 +249,8 @@ export default {
                 step: 10,
                 tooltips: [true, true],
                 format: {
-                    to: (value) => `<h1 class='font-bold'>$  ${Math.round(value)} </h1> `,
+                    to: (value) => `<h1 class='font-bold text-sm'>
+                        <span class='text-gray-600 text-xs'>EGP</span> ${Math.round(value)} </h1> `,
                     from: (value) => Number(value),
                 },
             });
@@ -248,90 +266,5 @@ export default {
 };
 </script>
 <style scoped>
-.noUi-target {
-    height: 8px;
-    background-color: rgb(227, 227, 227);
-    border: none;
-}
-
-:deep(.noUi-connect) {
-    background: #000;
-}
-
-:deep(.noUi-handle) {
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    border: none;
-    border-radius: 50%;
-    background-color: #000;
-    box-shadow: none;
-}
-
-:deep(.noUi-horizontal .noUi-handle) {
-    right: -4px;
-    top: -7px;
-    color: #000;
-    background-color: #000;
-}
-
-:deep(.noUi-handle:before, .noUi-handle:after) {
-    color: #000;
-    background: black;
-}
-
-.priceRange,
-.dressStyle,
-.styling {
-    display: block;
-    transition: all 0.5s ease-in-out;
-}
-
-.priceRange.active,
-.colors.active,
-.sizing.active,
-.styling.active,
-.dressStyle.active {
-    display: none;
-}
-
-.colors input[value='']:first-child {
-    position: relative;
-}
-
-.colors input[value='']:first-child::before {
-    content: "";
-    position: absolute;
-    background-color: red;
-    width: 5px;
-    height: 100%;
-    transform: rotateZ(-45deg);
-    left: 43%;
-    border: 1px solid rgba(0, 0, 0, 0.497);
-}
-
-.fa-check {
-    left: -4%;
-    bottom: 4%;
-}
-
-:deep(.noUi-horizontal .noUi-tooltip) {
-    background-color: transparent;
-    border: none;
-    top: 90%;
-}
-
-@media (max-width:656px) {
-    .filter {
-        position: absolute;
-        z-index: 30;
-        background: white;
-        width: 100%;
-        left: 0;
-        border-radius: 70px;
-        padding-top: 20px;
-        scroll-behavior: unset;
-        top: 8%;
-    }
-}
+@import url('../../assets/stylesheets/shop/shop-filter.css');
 </style>

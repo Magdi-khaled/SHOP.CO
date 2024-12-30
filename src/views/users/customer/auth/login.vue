@@ -1,4 +1,7 @@
 <template>
+    <baseError :show="show">
+        Wrong Email or password
+    </baseError>
     <div class="login w-full h-screen flex items-center justify-between">
         <div class="w-10/12 md:w-7/12 lg:w-5/12 rounded-xl m-auto pl-6 sm:pl-20 bg-white 
             lg:bg-none shadow-md lg:shadow-none shadow-gray-300 lg:shadow-none ">
@@ -16,12 +19,13 @@
             <div class="my-4 font-bold font-sans capitalize">
                 <div class="email  w-11/12 sm:w-10/12">
                     <h1 class="text-md">email <span class="text-red-600">*</span></h1>
-                    <input v-model="email" placeholder="Enter your mail address" class="outline-none w-full my-1 p-3 border-2
+                    <input name="email" autocomplete="off" v-model="email" placeholder="Enter your mail address" class="outline-none w-full my-1 p-3 border-2
                     focus:border-black font-normal rounded-xl">
                 </div>
                 <div class="password mt-2 w-11/12 sm:w-10/12">
                     <h1 class="text-md">password <span class="text-red-600">*</span></h1>
-                    <input type="password" v-model="password" placeholder="Enter password" class="outline-none w-full my-1 p-3 border-2 
+                    <input name="password" autocomplete="off" type="password" v-model="password"
+                        placeholder="Enter password" class="outline-none w-full my-1 p-3 border-2 
                     focus:border-black font-normal rounded-xl">
                 </div>
             </div>
@@ -40,8 +44,11 @@
             </div>
 
             <div class="w-11/12 sm:w-10/12 text-center my-4">
-                <baseButton class="w-full">log in
+                <baseButton @click="login" class="w-full">
+                    <p v-if="!loggedIn">log in</p>
+                    <p v-else class="logging border-2 border-[#fff] m-auto w-7 h-7 rounded-full"></p>
                 </baseButton>
+
             </div>
             <div class="w-11/12 sm:w-10/12 flex justify-center items-center">
                 <hr class="h-0.5 bg-gray-200 w-4/12">
@@ -65,24 +72,72 @@
     </div>
 </template>
 <script>
-import baseButton from '../../../../components/baseButton.vue'
+import baseButton from '../../../../components/baseButton.vue';
+import baseError from '../../../../components/baseError.vue';
+import { mapActions, mapGetters } from 'vuex';
 export default {
-    components: { baseButton },
+    components: { baseButton, baseError },
     data() {
         return {
             email: '',
-            password: ''
+            password: '',
+            loggedIn: false,
+            show: false
+        }
+    },
+    computed: {
+        ...mapGetters(['Get_User'])
+    },
+    methods: {
+        ...mapActions(['userLogin']),
+        async login() {
+            try {
+                const { email, password } = this;
+                const logged = await this.userLogin({ email: email, password: password });
+                if (logged) {
+                    this.loggedIn = true;
+                    setTimeout(() => {
+                        this.$router.push({ name: 'shop.co-home' })
+                    }, 1500);
+                }
+                else {
+                    this.loggedIn = false;
+                    this.show = true;
+                    setTimeout(() => {
+                        this.show = false;
+                    }, 2000)
+                }
+            }
+            catch (err) {
+                console.log('login error vue : ', err);
+            }
         }
     }
+
 }
 </script>
 <style scoped>
-/*
-@media (max-width:980px) {
-    .login {
-        background-image: url('../../../../assets/shop/rb_2149628702.png');
-        filter: grayscale(1);
-        height: 100vh;
+.logging {
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    animation-name: logginAnimate;
+    animation-duration: 0.6s;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+}
+
+@keyframes logginAnimate {
+    0% {
+        transform: rotateZ(0deg);
     }
-}*/
+
+    50% {
+        transform: rotateZ(180deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
 </style>

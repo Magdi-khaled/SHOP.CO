@@ -1,15 +1,15 @@
 <template>
     <!-- SALE FIRST SIGN UP -->
-    <div class="bg-black py-1 flex items-center justify-start px-2 md:px-0 sm:justify-center">
+    <!-- <div class="bg-black py-1 flex items-center justify-start px-2 md:px-0 sm:justify-center">
         <p class="text-white text-sm">Sign up and get 20% of your first order.
             <router-link :to="'/shop.co/signup'" class="underline font-bold">Sign Up Now</router-link>
             <button>
                 <i class="fa-light fa-xmark text-white text-md md:text-xl top-2 md:top-0 right-4"></i>
             </button>
         </p>
-    </div>
+    </div> -->
     <!-- NAVIGATION -->
-    <div class="flex flex-row items-center justify-between px-8 md:px-16 py-5 md:py-8 ">
+    <div class="flex flex-row items-center justify-between px-8 md:px-16 py-3 ">
         <button @click="hiddenNav = !hiddenNav" v-if="!showNav" class="pr-5 hover:text-gray-500 text-2xl">
             <i class="fa-solid fa-bars"></i>
         </button>
@@ -24,8 +24,13 @@
             <ul v-if="showNav" class="list-none flex gap-5">
                 <!-- <li @mouseover="dropDown = true" @mouseleave="dropDown = false"
                 class="whitespace-nowrap relative cursor-pointer py-4"> -->
-                <li class="whitespace-nowrap relative cursor-pointer py-4">
-                    <router-link to="/shop.co/shop">
+                <li class="relative cursor-pointer py-4">
+                    <router-link to="/shop.co/home" class="whitespace-nowrap capitalize">
+                        <i class="fa-solid fa-house"></i> home
+                    </router-link>
+                </li>
+                <li class="relative cursor-pointer py-4">
+                    <router-link to="/shop.co/shop" class="whitespace-nowrap capitalize">
                         <i class="fa-solid fa-shop"></i> Shop
                     </router-link>
                     <!--<i class="fa-regular fa-chevron-down text-sm"></i>
@@ -48,18 +53,13 @@
                     </ul> -->
                 </li>
                 <li class="py-4">
-                    <router-link to="#">
-                        <i class="fa-solid fa-badge-percent pr-1"></i> OnSale
+                    <router-link to="#" class="whitespace-nowrap capitalize">
+                        <i class="fa-solid fa-badge-percent pr-1"></i> onSale
                     </router-link>
                 </li>
                 <li class="py-4">
-                    <router-link to="#" class="whitespace-nowrap">
-                        <i class="fa-solid fa-clothes-hanger"></i> New Arrivals
-                    </router-link>
-                </li>
-                <li class="py-4">
-                    <router-link to="#">
-                        <i class="fa-regular fa-shirt"></i> Brands
+                    <router-link to="#" class="whitespace-nowrap capitalize">
+                        <i class="fa-regular fa-shirt"></i> brands
                     </router-link>
                 </li>
             </ul>
@@ -75,8 +75,12 @@
             </div>
             <ul lass="list-none W-6/12">
                 <!-- :class="{ 'hover:bg-white': hDropDown, 'hover:text-white': !hDropDown }" -->
+                <li class="hover:bg-[#2f2f2f] hover:font-medium hover:text-white capitalize">
+                    <router-link to="#"><i class="fa-solid fa-badge-percent w-1/12"></i> home</router-link>
+                </li>
+                <hr>
                 <li @click="hDropDown = !hDropDown"
-                    class="hidden-shop-li-1 hover:font-bold hover:text-white hover:bg-[#2f2f2f] whitespace-nowrap cursor-pointer capitalize">
+                    class="hidden-shop-li-1 hover:font-medium hover:text-white hover:bg-[#2f2f2f] whitespace-nowrap cursor-pointer capitalize">
                     <router-link to="/shop.co/shop">
                         <i class="fa-solid fa-shop w-1/12"></i> Shop
                     </router-link>
@@ -86,54 +90,48 @@
                             <router-link class="w-full px-4 py-2" to="/shop.co/shop">men's clothes</router-link>
                         </li>
                         <hr>
-                        <li class="hover:bg-[#2f2f2f] hover:font-bold hover:text-white">
+                        <li class="hover:bg-[#2f2f2f] hover:font-medium hover:text-white">
                             <router-link class="w-full px-4 py-2" to="/shop.co/shop">women's clothes</router-link>
                         </li>
                         <hr>
-                        <li class="hover:bg-[#2f2f2f] hover:font-bold hover:text-white">
+                        <li class="hover:bg-[#2f2f2f] hover:font-medium hover:text-white">
                             <router-link class="w-full px-4 py-2" to="/shop.co/shop">children clothes</router-link>
                         </li>
                         <hr>
-                        <li class="hover:bg-[#2f2f2f] hover:font-bold hover:text-white rounded-b-xl">
+                        <li class="hover:bg-[#2f2f2f] hover:font-medium hover:text-white rounded-b-xl">
                             <router-link class="w-full px-4 py-2" to="/shop.co/shop">fashion</router-link>
                         </li>
                     </ul> -->
                 </li>
                 <hr>
-                <li class="hover:bg-[#2f2f2f] hover:font-bold hover:text-white capitalize">
+                <li class="hover:bg-[#2f2f2f] hover:font-medium hover:text-white capitalize">
                     <router-link to="#"><i class="fa-solid fa-badge-percent w-1/12"></i> OnSale</router-link>
                 </li>
                 <hr>
-                <li class="hover:bg-[#2f2f2f] hover:font-bold hover:text-white capitalize">
-                    <router-link to="#" class="whitespace-nowrap">
-                        <i class="fa-regular fa-shirt w-1/12"></i> New Arrivals
-                    </router-link>
-                </li>
-                <hr>
-                <li class="hover:bg-[#2f2f2f] hover:font-bold hover:text-white capitalize">
+                <li class="hover:bg-[#2f2f2f] hover:font-medium hover:text-white capitalize">
                     <router-link to="#"><i class="fa-solid fa-clothes-hanger w-1/12"></i> brands</router-link>
                 </li>
                 <hr>
-                <li class="hover:bg-[#2f2f2f] hover:font-bold hover:text-white capitalize">
+                <li class="hover:bg-[#2f2f2f] hover:font-medium hover:text-white capitalize">
                     <router-link to="#"><i class="fa-brands fa-blogger-b w-1/12"></i> blogs</router-link>
                 </li>
                 <hr>
-                <li class="hover:bg-[#2f2f2f] hover:font-bold hover:text-white capitalize">
+                <li class="hover:bg-[#2f2f2f] hover:font-medium hover:text-white capitalize">
                     <router-link to="#"><i class="fa-solid fa-phone-volume w-1/12"></i> Support</router-link>
                 </li>
                 <hr>
-                <li class="hover:bg-[#2f2f2f] hover:font-bold hover:text-white uppercase">
+                <li class="hover:bg-[#2f2f2f] hover:font-medium hover:text-white uppercase">
                     <router-link to="#"><i class="fa-solid fa-message-question w-1/12"></i> faq</router-link>
                 </li>
             </ul>
         </div>
         <!-- CART - PROFILE - SEARCH -->
-        <div class="w-6/12 flex flex-row justify-end">
+        <div class="w-7/12 md:w-6/12 flex flex-row justify-end">
             <!-- SEARCH-BAR -->
-            <div v-if="!searchIcon" class="w-full relative search-bar">
-                <input v-model="searchText" @change="handleSearchResult" type="text"
-                    placeholder="Search for products..."
-                    class="w-full py-3 px-4 pl-12 bg-[#f2f2f2] outline-none rounded-xl w-11/12 focus:bg-white focus:border-2">
+            <div v-if="!searchIcon" class="w-10/12 relative search-bar">
+                <input name="searchText" v-model="searchText" @change="handleSearchResult" type="text"
+                    placeholder="What are you looking for?"
+                    class="w-full py-3 px-4 pl-12 bg-[#f2f2f2] outline-none rounded-md w-10/12 focus:bg-white focus:border-2">
                 <i class="fa-regular fa-magnifying-glass absolute left-4 top-3 text-xl text-gray-400"></i>
                 <ul v-if="searchText" class=" absolute bg-white w-full z-50 rounded-b-xl">
                     <template v-for="item in handleSearchResult" :key="index">
@@ -142,39 +140,53 @@
                     </template>
                 </ul>
             </div>
-            <div class="w-9/12 sm:w-3/12 flex items-center px-1 justify-end">
+            <div class="w-8/12 sm:w-3/12 flex items-center px-1 justify-end">
                 <button v-if="searchIcon" class="w-4/12">
                     <i class="fa-solid fa-magnifying-glass text-xl"></i>
                 </button>
                 <!-- cart -->
-                <button v-if="!cartLink" @click="cartOn = true" class="pl-2 text-center hover:opacity-70">
-                    <img class="w-full" src="../assets/images/icons/cart.png" alt="cart" title="cart">
+                <button v-if="!cartLink" @click="cartOn = true" class="w-6/12 pr-4 text-center hover:opacity-70"
+                    title="cart">
+                    <!-- <img class="w-full" src="../assets/images/icons/cart.png" alt="cart"> -->
+                    <i class="fa-solid fa-cart-shopping text-xl"></i>
                 </button>
-                <router-link v-else :to="gotoCart">
-                    <img class="w-full" src="../assets/images/icons/cart.png" alt="cart" title="cart">
+                <router-link v-else :to="gotoCart" title="cart">
+                    <!-- <img class="w-full" src="../assets/images/icons/cart.png" alt="cart" title="cart"> -->
+                    <i class="fa-solid fa-cart-shopping text-xl pr-2 "></i>
                 </router-link>
                 <cart-shop :showCart="cartOn" :showCart2="cartLink" @closeCart="cartOn = false"></cart-shop>
                 <!-- sign in -->
-                <router-link :to="'/shop.co/login'" class="pl-2 text-center justify-self-end hover:opacity-70">
-                    <img src="../assets/images/icons/user.png" alt="profile" title="sign in">
+                <router-link v-if="!userToken" :to="'/shop.co/login'" class="hover:opacity-70" title="sign in">
+                    <i class="fa-duotone fa-solid fa-user text-black border-2 p-2 rounded-md"></i>
                 </router-link>
+                <div v-else class="flex w-7/12 items-center justify-end">
+                    <router-link to="/shop.co/user/profile" class="pl-2 hover:opacity-70" title="profile">
+                        <i class="fa-duotone fa-solid fa-user text-black border-2 p-2 rounded-md"></i>
+                    </router-link>
+                    <button @click="uLogout" class="pl-2 text-center justify-self-end hover:opacity-70" title="logout">
+                        <i class="fa-solid fa-right-from-bracket text-gray-700 text-lg"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-    <hr class="h-0.5 bg-back w-full">
+    <hr>
 </template>
 
 <script>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import cartShop from '../components/cart/cart.shop.vue';
+import { mapActions, mapGetters } from 'vuex/dist/vuex.cjs.js';
 export default {
     name: 'navbar',
     components: { cartShop },
     data() {
         return {
-            products: ['T-shirt', 'boxer', 'dress', 'Jacket',]
+            products: ['T-shirt', 'boxer', 'dress', 'Jacket',],
+            userToken: localStorage.getItem('token'),
         }
     },
+
     setup() {
         const dropDown = ref(false);
         const hDropDown = ref(false);
@@ -211,20 +223,34 @@ export default {
             return this.show;
         },
         handleSearchResult() {
-            const seachedList = this.products.filter(
-                (item) => item.toString().includes(this.searchText));
-            console.log('searching...')
+            const searchedList = this.products.filter((item) =>
+                item.toString().includes(this.searchText)
+            );
+            console.log('searching...');
             setTimeout(() => {
                 this.show = false;
             }, 1000);
             this.show = true;
-            return seachedList;
+            return searchedList;
         },
         gotoCart() {
             return '/shop.co/user/shopping-cart';
-        }
+        },
     },
-    methods: {}
+    methods: {
+        ...mapActions(['userLogout']),
+        async uLogout() {
+            try {
+                await this.userLogout();
+                setTimeout(() => {
+                    this.$router.push({ name: 'shop.co-login' });
+
+                }, 1500)
+            } catch (error) {
+                console.error('logout error : ', error);
+            }
+        },
+    },
 }
 </script>
 <style scoped>

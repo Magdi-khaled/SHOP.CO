@@ -1,0 +1,88 @@
+.noUi-target {
+  height: 8px;
+  background-color: rgb(227, 227, 227);
+}
+
+:deep(.noUi-connect) {
+  background: #000;
+}
+
+:deep(.noUi-handle) {
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  border: 2px solid gray;
+  border-radius: 25%;
+  background-color: gray;
+  box-shadow: none;
+}
+
+:deep(.noUi-horizontal .noUi-handle) {
+  right: -4px;
+  top: -3px;
+  color: #000;
+  background-color: #000;
+}
+/* 
+:deep(.noUi-handle:before, .noUi-handle:after) {
+  color: #000;
+  background: black;
+} */
+
+.priceRange,
+.dressStyle,
+.styling {
+  display: block;
+  transition: all 0.5s ease-in-out;
+}
+
+.priceRange.active,
+.colors.active,
+.sizing.active,
+.styling.active,
+.dressStyle.active {
+  display: none;
+}
+
+.colors input[value=""]:first-child {
+  position: relative;
+}
+
+.colors input[value=""]:first-child::before {
+  content: "";
+  position: absolute;
+  background-color: red;
+  width: 5px;
+  height: 100%;
+  transform: rotateZ(-45deg);
+  left: 43%;
+  border: 1px solid rgba(0, 0, 0, 0.497);
+}
+
+.fa-check {
+  color: #fff;
+  left: -11%;
+  bottom: -12%;
+}
+
+:deep(.noUi-horizontal .noUi-tooltip) {
+  background-color: transparent;
+  border: none;
+  top: 90%;
+}
+
+@media (max-width: 761px) {
+  .filter {
+    position: absolute;
+    z-index: 30;
+    background: white;
+    width: 100%;
+    left: 0;
+    border-radius: 70px;
+    padding: 15px;
+    border: 2px solid gray;
+    padding-top: 20px;
+    scroll-behavior: unset;
+    top: 8%;
+  }
+}
